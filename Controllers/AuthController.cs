@@ -6,7 +6,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AuthApi.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace AuthApi.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -26,7 +25,7 @@ namespace AuthApi.Controllers
         }
 
         // GET: api/Auth
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         {
@@ -34,6 +33,7 @@ namespace AuthApi.Controllers
         }
 
         // GET: api/Auth/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> GetUsers(long id)
         {
@@ -48,8 +48,8 @@ namespace AuthApi.Controllers
         }
 
         // PUT: api/Auth/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //Сделать проверку на роли
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsers(long id, Users users)
         {
@@ -66,7 +66,7 @@ namespace AuthApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!_context.Users.Any(e => e.Id == id))
                 {
                     return NotFound();
                 }
@@ -82,6 +82,7 @@ namespace AuthApi.Controllers
         // POST: api/Auth
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Users>> PostUsers(Users users)
         {
@@ -92,6 +93,8 @@ namespace AuthApi.Controllers
         }
         
         // DELETE: api/Auth/5
+        //Добавить проверку на роли
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Users>> DeleteUsers(long id)
         {
@@ -105,11 +108,6 @@ namespace AuthApi.Controllers
             await _context.SaveChangesAsync();
 
             return users;
-        }
-
-        private bool UsersExists(long id)
-        {
-            return _context.Users.Any(e => e.Id == id);
         }
 
         [HttpPost("token")]
@@ -161,7 +159,7 @@ namespace AuthApi.Controllers
         }
 
         [Authorize]
-        [Route("getuser")]
+        [HttpPost("getlogin")]
         public IActionResult GetLogin()
         {
             Users person = _context.Users.FirstOrDefault(x => x.Login == User.Identity.Name);
