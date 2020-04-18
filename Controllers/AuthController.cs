@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace AuthApi.Controllers
 {
     [Produces("application/json")]
-    [Route("api/auth")]
+    [Route("api/auth/")]
     [ApiController]
     public class AuthController : ControllerBase
     {
