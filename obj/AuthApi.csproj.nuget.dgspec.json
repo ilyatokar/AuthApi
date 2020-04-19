@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/media/sf_WebServer/AuthApi/AuthApi.csproj": {}
+    "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\AuthApi.csproj": {}
   },
   "projects": {
-    "/media/sf_WebServer/AuthApi/AuthApi.csproj": {
+    "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\AuthApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/sf_WebServer/AuthApi/AuthApi.csproj",
+        "projectUniqueName": "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\AuthApi.csproj",
         "projectName": "AuthApi",
-        "projectPath": "/media/sf_WebServer/AuthApi/AuthApi.csproj",
-        "packagesPath": "/home/userman/.nuget/packages/",
-        "outputPath": "/media/sf_WebServer/AuthApi/obj/",
+        "projectPath": "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\AuthApi.csproj",
+        "packagesPath": "C:\\Users\\Ilya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/userman/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Ilya\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -81,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

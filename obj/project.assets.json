@@ -8426,11 +8426,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ilya\\WebServer\\AuthApi\\AuthApi.csproj",
+      "projectUniqueName": "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\AuthApi.csproj",
       "projectName": "AuthApi",
-      "projectPath": "C:\\Users\\Ilya\\WebServer\\AuthApi\\AuthApi.csproj",
+      "projectPath": "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\AuthApi.csproj",
       "packagesPath": "C:\\Users\\Ilya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ilya\\WebServer\\AuthApi\\obj\\",
+      "outputPath": "C:\\Users\\Ilya\\WebServer\\TodoListApi\\AuthApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -29,7 +29,7 @@ namespace AuthApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult> PostUsers(Users users)
         {
             Users person = _context.Users.FirstOrDefault(x => x.Login == users.Login );
             if (person != null)
@@ -40,7 +40,7 @@ namespace AuthApi.Controllers
             _context.Users.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.Id}, users);
+            return Ok("Create new user");
         }
 
         [HttpPost("token")]
