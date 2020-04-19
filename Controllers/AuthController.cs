@@ -40,7 +40,7 @@ namespace AuthApi.Controllers
             _context.Users.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.Id, Role = users.Role}, users);
+            return CreatedAtAction("GetUsers", new { id = users.Id}, users);
         }
 
         [HttpPost("token")]
