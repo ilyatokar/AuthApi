@@ -31,10 +31,16 @@ namespace AuthApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Users>> PostUsers(Users users)
         {
+            Users person = _context.Users.FirstOrDefault(x => x.Login == users.Login );
+            if (person != null)
+            {
+                return BadRequest(new { errorText = "A user with the same name already exists." });
+            }
+
             _context.Users.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetUsers", new { id = users.Id, Role = users.Role}, users);
         }
 
         [HttpPost("token")]
