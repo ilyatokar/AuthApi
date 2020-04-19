@@ -48,7 +48,7 @@ namespace AuthApi
                             ValidateIssuerSigningKey = true,
                         };
                     });;
-            services.AddDbContext<AuthContext>(opt => opt.UseNpgsql("Server=localhost; Port=5432; Database=Auth; username=postgres; password=secret;"));
+            services.AddDbContext<AuthContext>(opt => opt.UseNpgsql("Server=80.93.177.181; Port=5432; Database=auth; username=postgreadmin; password=secret;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

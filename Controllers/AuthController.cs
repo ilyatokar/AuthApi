@@ -24,65 +24,10 @@ namespace AuthApi.Controllers
             _context = context;
         }
 
-        // GET: api/Auth
-        [Authorize(Roles = "admin")]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
-        {
-            return await _context.Users.ToListAsync();
-        }
-
-        // GET: api/Auth/5
-        [Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(long id)
-        {
-            var users = await _context.Users.FindAsync(id);
-
-            if (users == null)
-            {
-                return NotFound();
-            }
-
-            return users;
-        }
-
-        // PUT: api/Auth/5
-        //Сделать проверку на роли
-        [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(long id, Users users)
-        {
-            if (id != users.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(users).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Users.Any(e => e.Id == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
 
         // POST: api/Auth
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Users>> PostUsers(Users users)
         {
@@ -90,24 +35,6 @@ namespace AuthApi.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUsers", new { id = users.Id }, users);
-        }
-        
-        // DELETE: api/Auth/5
-        //Добавить проверку на роли
-        [Authorize]
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Users>> DeleteUsers(long id)
-        {
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(users);
-            await _context.SaveChangesAsync();
-
-            return users;
         }
 
         [HttpPost("token")]
